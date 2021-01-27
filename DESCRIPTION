@@ -1,18 +1,23 @@
 Package: QuantitativePooledTesting
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+Type: Package
+Title: Pooled Testing Strategies with Quantitative Assays
+Version: 0.2.3
+Authors@R: c(
+	person("Wanning", "Su", email = "wanning_su@brown.edu", role = c("aut", "cre")),
+	person("Tao", "Liu", email = "tliu@stat.brown.edu", role = "aut")
+	)
+Maintainer: Wanning Su, BSc <wanning_su@brown.edu>
+Description: To calculate the estimated number of quantitative assays that are needed by "mini-pooling", "mini-pooling with algorithm" (May et al 2010), and marker-assisted mini-pooling with algorithm (Liu et al 2017).
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1.9000
 URL: https://github.com/whitneysu/QuantitativePooledTesting
 BugReports: https://github.com/whitneysu/QuantitativePooledTesting/issues
+Suggests: 
+    spelling,
+    knitr,
+    rmarkdown
+Language: en-US
+VignetteBuilder: knitr

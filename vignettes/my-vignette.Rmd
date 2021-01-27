@@ -1,0 +1,342 @@
+---
+title: "Pooled Testing Strategies with Quantitative Assays "
+author: "Tao Liu, PhD, Brown University"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{QuantPooledTesting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+**Type** Package
+
+**Title** Quantitative Pooled Testing
+
+**Version** 1.0
+
+**Date** "`r Sys.Date()`"
+
+**Authors** Wanning Su, Tao Liu
+
+**Maintainer** Wanning (wanning_su@brown.edu)
+
+**Description** This package implements pooled testing with quantitative assays. 
+
+**License** MIT
+
+**URL**  https://github.com/whitneysu/QuantitativePooledTesting
+
+**Depends** R (>= 3.2.0)
+
+**LazyData** true
+
+<!-- START doctoc -->
+<!-- END doctoc -->
+
+
+###ecdf_pool
+
+*empirical cdf calculation*
+
+####Description
+
+> Generates an empirical cdf for quantitative pooled testing 
+
+####Usage
+
+> ecdf_pool(v, N = length(v), cutoff = max(v), ...)
+
+####Arguments
+
+> - **v** &nbsp;&nbsp;&nbsp;&nbsp; the numeric vector of the observations for calculating ecdf.For quantitative pooling strategies, only CDF on the support of v<cutoff is needed. 
+> - **N**  &nbsp;&nbsp;&nbsp;&nbsp;  the number of observations.
+> - **cutoff** cutoff value of the quantitative assay that defines test positivity. 
+
+####Value
+
+> a list of two items: (1) a matrix and (2) a numeric value. The matrix has 3 columns: the support consisting of values of such that v < cutoff, the empirical PMF, and the empirical CDF. The second item in the list output is a numeric value that represents the proportion of total observations that are less than cutoff value v. 
+ 
+####Author(s)
+
+> Wanning Su (wanning_su@brown.edu), Tao Liu, Joseph Hogan
+
+####References
+
+> Liu T, Hogan JW, Daniels MJ, et al. (2017). "Improved HIV-1 viral load monitoring capacity using pooled testing with marker-assisted deconvolution." *J Acquir Immune Defic Syndr* 75(5):580-587.
+
+
+####Examples
+
+```{r,eval=FALSE}
+ecdf_pool(round(runif(100, 0, 20)), cutoff = 18)
+```
+
+_____
+
+
+###to_ecdf_class
+
+*Create a ecdf class for ecdf_pool function output*
+
+####Description
+
+> Create an ecdf class object. 
+
+####Usage
+
+> to_ecdf_class(x)
+
+####Arguments
+
+> - **x** &nbsp;&nbsp;&nbsp;&nbsp; Output object from the \code{ecdf_pool()} function 
+
+####Value
+
+> An object of class ecdf
+ 
+####Author(s)
+
+> Wanning Su (wanning_su@brown.edu), Tao Liu, Joseph Hogan
+
+####References
+
+> Liu T, Hogan JW, Daniels MJ, et al. (2017). "Improved HIV-1 viral load monitoring capacity using pooled testing with marker-assisted deconvolution." *J Acquir Immune Defic Syndr* 75(5):580-587.
+
+
+####Examples
+
+```{r,eval=FALSE}
+to_ecdf_class(ecdf_pool(round(runif(100, 0, 20)), cutoff = 18))
+```
+
+_____
+
+###convol.dens
+
+*convoluting two empirical distributions*
+
+####Description
+
+> This function calculates the convolution of two empirical distributions up to the value of \code{cutoff} (on the sum of two random variables).
+
+####Usage
+
+> convol.dens(ecdf1, ecdf2, N1, N2, cutoff)
+
+
+####Arguments
+
+> - **ecdf1** &nbsp;&nbsp;&nbsp;&nbsp; An ecdf that is the matrix output object from the function \code{convol.dens()} itself or from the function
+\code{ecdf_pool()}.
+> - **ecdf2**  &nbsp;&nbsp;&nbsp;&nbsp;  An ecdf that is the matrix output object from the function \code{convol.dens()} itself or from the function
+\code{ecdf_pool()}.
+> - **N1** &nbsp;&nbsp;&nbsp;&nbsp; The size of the empirical support of \code{ecdf1}.
+> - **N2**  &nbsp;&nbsp;&nbsp;&nbsp; The size of the empirical support of \code{ecdf2}.
+> - **cutoff**  &nbsp;&nbsp;&nbsp;&nbsp; Cutoff of the support of the resulting convolution distribution.
+
+
+####Value
+
+> Returns a list of two items: (1) a matrix and (2) a numeric value. The matrix has 3 columns: the support consisting of values of such that v < cutoff, the empirical PMF, and the empirical CDF. The second item in the list output is a numeric value that represents the proportion of total observations that are less than cutoff value v. 
+ 
+ 
+####Author(s)
+
+> Wanning Su (wanning_su@brown.edu), Tao Liu, Joseph Hogan
+
+####References
+
+> Liu T, Hogan JW, Daniels MJ, et al. (2017). "Improved HIV-1 viral load monitoring capacity using pooled testing with marker-assisted deconvolution." *J Acquir Immune Defic Syndr* 75(5):580-587.
+
+
+####Examples
+
+```{r,eval=FALSE}
+ecdf1 <- ecdf_pool(round(runif(100, 0, 20)), cutoff = 18)$out
+ecdf2 <- ecdf_pool(round(runif(100, 0, 20)), cutoff = 17)$out
+cutoff <- 18 
+convol.dens(ecdf1, ecdf2, N1, N2, cutoff)
+```
+_____
+
+###foo_atr
+
+*Intermediate Function used by MPA*
+
+
+####Description
+
+> This function allows you to compute the calculate the ATR for MPA for a range of pool sizes (from 2 to pool size specified)
+
+####Usage
+
+> foo_atr(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE)
+
+
+####Arguments
+
+> - **v** &nbsp;&nbsp;&nbsp;&nbsp; the numeric vector of the observations for calculating ecdf.For quantitative pooling strategies, only CDF on the support of v<cutoff is needed. 
+> - **N**  &nbsp;&nbsp;&nbsp;&nbsp;  the number of observations.
+> - **cutoff** cutoff value of the quantitative assay that defines test positivity. 
+> - **max_K** &nbsp;&nbsp;&nbsp;&nbsp; Maximum pool size that is under consideration.
+> - **quietly**  &nbsp;&nbsp;&nbsp;&nbsp; Logical value; whether the results print to screen or not.
+
+ 
+####Value
+
+> Returns a three column matrix of 1)pool size, 2)convolution CDF, and the 3)ATR for MPA.
+
+####Author(s)
+
+> Wanning Su (wanning_su@brown.edu), Tao Liu, Joseph Hogan
+
+####References
+
+> Liu T, Hogan JW, Daniels MJ, et al. (2017). "Improved HIV-1 viral load monitoring capacity using pooled testing with marker-assisted deconvolution." *J Acquir Immune Defic Syndr* 75(5):580-587.
+
+####Examples
+
+```{r,eval=FALSE}
+v = c(200, 1500, 1900, 800, 950)
+max_K = 9
+cutoff = 2000
+foo_atr(v, N = length(v), max_K, cutoff, quietly = TRUE)
+```
+
+_____
+
+###mp_atr
+
+*ATR required by MiniPooling(MP)*
+
+
+###Description
+
+> This function calculates the ATR needed by MP for a range of pool sizes (from 2 to a pool size specified).
+
+####Usage
+
+> mp_atr(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE)
+
+####Arguments
+
+> - **v** &nbsp;&nbsp;&nbsp;&nbsp; the numeric vector of the observations for calculating ecdf.For quantitative pooling strategies, only CDF on the support of v<cutoff is needed. 
+> - **N**  &nbsp;&nbsp;&nbsp;&nbsp;  the number of observations.
+> - **cutoff** cutoff value of the quantitative assay that defines test positivity. 
+> - **max_K** &nbsp;&nbsp;&nbsp;&nbsp; Maximum pool size that is under consideration.
+> - **quietly**  &nbsp;&nbsp;&nbsp;&nbsp; Logical value; whether the results print to screen or not.
+
+####Value
+
+> The function returns a matrix of two columns: The pool size from 2:max_K and the Average Tests Required by MP given that pool size (MP_ATR).
+
+####Author(s)
+
+> Wanning Su (wanning_su@brown.edu), Tao Liu, Joseph Hogan
+
+####References
+
+> Liu T, Hogan JW, Daniels MJ, et al. (2017). "Improved HIV-1 viral load monitoring capacity using pooled testing with marker-assisted deconvolution." *J Acquir Immune Defic Syndr* 75(5):580-587.
+
+
+####Examples
+
+```{r,eval=FALSE}
+v = c(200, 1500, 1900, 800, 950)
+max_K = 9
+cutoff = 2000
+mp_atr(v, N = length(v), max_K, cutoff, quietly = TRUE)
+```
+
+_____
+
+###mpa_atr
+
+*ATR required by MPA*
+
+###Description
+
+> This function calculates the ATR needed by MP for a range of pool sizes (from 2 to a pool size specified).
+
+####Usage
+
+> mpa_atr(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE)
+
+####Arguments
+
+> - **v** &nbsp;&nbsp;&nbsp;&nbsp; the numeric vector of the observations for calculating ecdf.For quantitative pooling strategies, only CDF on the support of v<cutoff is needed. 
+> - **N**  &nbsp;&nbsp;&nbsp;&nbsp;  the number of observations.
+> - **cutoff** cutoff value of the quantitative assay that defines test positivity. 
+> - **max_K** &nbsp;&nbsp;&nbsp;&nbsp; Maximum pool size that is under consideration.
+> - **quietly**  &nbsp;&nbsp;&nbsp;&nbsp; Logical value; whether the results print to screen or not.
+
+####Value
+
+> The function returns a matrix of two columns: The pool size from 2:max_K and the Average Tests Required by MPA given that pool size (MPA_ATR).
+
+####Author(s)
+
+> Wanning Su (wanning_su@brown.edu), Tao Liu, Joseph Hogan
+
+####References
+
+> Liu T, Hogan JW, Daniels MJ, et al. (2017). "Improved HIV-1 viral load monitoring capacity using pooled testing with marker-assisted deconvolution." *J Acquir Immune Defic Syndr* 75(5):580-587.
+
+
+####Examples
+
+```{r,eval=FALSE}
+v = c(200, 1500, 1900, 800, 950)
+max_K = 9
+cutoff = 2000
+mpa_atr(v, N = length(v), max_K, cutoff, quietly = TRUE)
+```
+
+_____
+
+###mmpa_atr
+
+*ATR required by MMPA*
+
+###Description
+
+> This function calculates the ATR needed by MMPA for a range of pool sizes (from 2 to a pool size specified).
+
+####Usage
+
+> mmpa_atr(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE, s = )
+
+####Arguments
+
+> - **v** &nbsp;&nbsp;&nbsp;&nbsp; the numeric vector of the observations for calculating ecdf.For quantitative pooling strategies, only CDF on the support of v<cutoff is needed. 
+> - **N**  &nbsp;&nbsp;&nbsp;&nbsp;  the number of observations.
+> - **cutoff** cutoff value of the quantitative assay that defines test positivity. 
+> - **max_K** &nbsp;&nbsp;&nbsp;&nbsp; Maximum pool size that is under consideration.
+> - **quietly**  &nbsp;&nbsp;&nbsp;&nbsp; Logical value; whether the results print to screen or not.
+> - **s**  &nbsp;&nbsp;&nbsp;&nbsp; Risk score that is used for ranked testing
+
+
+####Value
+
+> The function returns a matrix of two columns: The pool size from 2:max_K and the Average Tests Required by MMPA given that pool size (MMPA_ATR).
+
+####Author(s)
+
+> Wanning Su (wanning_su@brown.edu), Tao Liu, Joseph Hogan
+
+####References
+
+> Liu T, Hogan JW, Daniels MJ, et al. (2017). "Improved HIV-1 viral load monitoring capacity using pooled testing with marker-assisted deconvolution." *J Acquir Immune Defic Syndr* 75(5):580-587.
+
+
+####Examples
+
+```{r,eval=FALSE}
+v = c(200, 1500, 1900, 800, 950)
+max_K = 9
+cutoff = 2000
+s = c(5, 3, 1, 2, 4)
+mmpa_atr(v, s, max_K, cutoff = 2000, quietly = TRUE)
+```
+
