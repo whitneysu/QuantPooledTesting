@@ -1,20 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# QuantitativePooledTesting
+# QuantPooledTesting
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of QuantitativePooledTesting is to …
+The goal of QuantPooledTesting is to …
 
 ## Installation
 
-You can install the released version of QuantitativePooledTesting from
+You can install the released version of QuantPooledTesting from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("QuantitativePooledTesting")
+install.packages("QuantPooledTesting")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
@@ -29,7 +29,7 @@ devtools::install_github("whitneysu/QuantitativePooledTesting")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(QuantitativePooledTesting)
+library(QuantPooledTesting)
 ## basic example code
 ```
 
