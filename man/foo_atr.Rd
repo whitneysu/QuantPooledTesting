@@ -33,18 +33,3 @@ foo_atr(c(200, 1500, 1900, 800, 950), max_K = 9, cutoff = 2000, quietly = TRUE)
 foo_atr(c(200, 1500, 1900, 800, 950), max_K = 6, cutoff = 1000, quietly = TRUE)
 
 }
-\keyword{(?)}
-\keyword{(Average}
-\keyword{ATR}
-\keyword{CDF,}
-\keyword{Convolution}
-\keyword{Intermediate}
-\keyword{MPA_ATR}
-\keyword{Pool}
-\keyword{Pooled}
-\keyword{Quantitative}
-\keyword{Required),}
-\keyword{Size,}
-\keyword{Testing,}
-\keyword{Tests}
-\keyword{function,}

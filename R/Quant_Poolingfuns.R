@@ -14,7 +14,6 @@
 #' @return The function returns a matrix of three columns: The support of (\code{v <= cutoff}),
 #' empirical PMF and empirical CDF.
 #'
-#' @keywords Quantitative Pooled Testing
 #'
 #' @import stats utils
 #' @references
@@ -40,7 +39,6 @@ ecdf_pool = function (v, N = length(v), cutoff = max(v), ...){
   list(out = ecdf.vl, p0 = tail(ecdf.vl[, 3], 1))
 }
 
-# 2. NEW FUNCTION BEGINS HERE
 
 #' Convert ecdf_pool output to an \code{ecdf} class
 #'
@@ -48,7 +46,6 @@ ecdf_pool = function (v, N = length(v), cutoff = max(v), ...){
 #'
 #' @return Output in the \code{ecdf} class
 #'
-#' @keywords Quantitative Pooled Testing
 #'
 #' @references
 #'
@@ -72,8 +69,6 @@ to_ecdf_class = function(x){
   rval
 }
 
-# 3. NEW FUNCTION BEGINS HERE
-
 #' Convolution of two empirical distributions
 #'
 #' The function calculates the convolution of two empirical distributions up to the value of
@@ -90,7 +85,6 @@ to_ecdf_class = function(x){
 #' @return The function returns a matrix of three columns: The support of convolution distribution
 #' up to \code{cutoff}, empirical PMF and empirical CDF.
 #'
-#' @keywords Quantitative Pooled Testing, convolution, empirical distribution
 #'
 #' @import stats utils
 #'
@@ -135,9 +129,6 @@ convol.dens <- function(ecdf1, ecdf2, N1, N2, cutoff) {
   list(out = out, p0 = tail(out[, 3], 1))
 }
 
-
-# 4. A New function begins here
-
 #' Intermediate function needed by MP, MiniPooling with Algorithm (MPA), and mMPA
 #'
 #' This function calculates the ART needed by MPA for a range of pool sizes
@@ -148,8 +139,6 @@ convol.dens <- function(ecdf1, ecdf2, N1, N2, cutoff) {
 #' @param quietly Logical value; whether print the results to screen or not.
 #'
 #' @return The function returns a matrix of two columns: The pool size from 1:max_K, the convol_cdf(? question about how to describe this value), and the Average Tests Required by MPA (MPA_ATR) given that pool size
-#'
-#' @keywords Quantitative Pooled Testing, ATR (Average Tests Required), Intermediate function, Pool Size, Convolution CDF, MPA_ATR (?)
 #'
 #' @examples
 #'
@@ -181,8 +170,6 @@ foo_atr = function (v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE)
 }
 
 
-# 5. A New function begins here
-
 #' Average Tests Required (ATR) needed by MiniPooling (MP)
 #'
 #' This function calculates the ART needed by MP for a range of pool sizes
@@ -191,8 +178,6 @@ foo_atr = function (v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE)
 #' @inheritParams foo_atr
 #'
 #' @return The function returns a matrix of two columns: The pool size from 2:max_K and the Average Tests Required by MP given that pool size (MP_ATR)
-#'
-#' @keywords Quantitative Pooled Testing, ATR (Average Tests Required), Pool Size (2:K), MP_ATR (?)
 #'
 #' @references
 #'
@@ -218,10 +203,6 @@ mp_atr = function(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE){
 }
 
 
-
-# 6. A New function begins here
-
-
 #' Average Tests Required (ATR) needed by MiniPooling with Algorithm (MPA)
 #'
 #' This function calculates the ART needed by MP for a range of pool sizes
@@ -231,7 +212,6 @@ mp_atr = function(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE){
 #'
 #' @return The function returns a matrix of two columns: The pool size from 2:max_K and the Average Tests Required by MPA given that pool size (MPA_ATR)
 #'
-#' @keywords Quantitative Pooled Testing, ATR (Average Tests Required), Pool Size (2:K), MPA_ATR (?)
 #'
 #' @references
 #'
@@ -256,9 +236,6 @@ mpa_atr = function(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE){
   out[-1, c(1, 3)]
 }
 
-# 7. A New function begins here
-
-
 #' Average Tests Required (ATR) needed by Marker-Assisted Mini-Pooling with Algorithm (mMPA)
 #'
 #' This function calculates the ATR needed by mMPA for a range of pool sizes
@@ -268,8 +245,6 @@ mpa_atr = function(v, N = length(v), max_K = 5, cutoff = 1000, quietly = TRUE){
 #' @param s Risk score that is used for ranked testing
 #'
 #' @return The function returns a matrix of two columns: The pool size from 2:max_K and the Average Tests Required by mMPA given that pool size (mMPA_ATR)
-#'
-#' @keywords Quantitative Pooled Testing, ATR (Average Tests Required), Pool Size (2:K), mMPA_ATR (?)
 #'
 #' @references
 #'

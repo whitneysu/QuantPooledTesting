@@ -38,15 +38,3 @@ Liu T, Hogan JW, Daniels, MJ, Coetzer M, Xu Y, Bove G, et al. Improved HIV-1 Vir
 Monitoring Capacity Using Pooled Testing with Marker-Assisted Deconvolution. Journal of
 AIDS. 2017;75(5): 580-587.
 }
-\keyword{(2:K),}
-\keyword{(?)}
-\keyword{(Average}
-\keyword{ATR}
-\keyword{MPA_ATR}
-\keyword{Pool}
-\keyword{Pooled}
-\keyword{Quantitative}
-\keyword{Required),}
-\keyword{Size}
-\keyword{Testing,}
-\keyword{Tests}
