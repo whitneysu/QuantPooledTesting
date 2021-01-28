@@ -7,7 +7,7 @@ Authors@R: c(
 	person("Tao", "Liu", email = "tliu@stat.brown.edu", role = "aut")
 	)
 Maintainer: "Wanning Su" <wanning_su@brown.edu>
-Description: To calculate the estimated number of quantitative assays that are needed by "mini-pooling", "mini-pooling with algorithm" (May et al. 2010) <doi:10.1097/QAI.0b013e3181ba37a7>, and marker-assisted mini-pooling with algorithm (Liu et al. 2017).Please refer to Liu et al. (2017) <doi:10.1097/QAI.0000000000001424> for more details.
+Description: The purpose of this package is to calculate the estimated number of quantitative assays that are needed by "mini-pooling", "mini-pooling with algorithm" (May et al. 2010) <doi:10.1097/QAI.0b013e3181ba37a7>, and marker-assisted mini-pooling with algorithm (Liu et al. 2017).Please refer to Liu et al. (2017) <doi:10.1097/QAI.0000000000001424> for more details.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
