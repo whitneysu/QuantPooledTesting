@@ -4,9 +4,9 @@
 \name{QuantitativePooledTesting-package}
 \alias{QuantitativePooledTesting}
 \alias{QuantitativePooledTesting-package}
-\title{QuantitativePooledTesting: What the Package Does (One Line, Title Case)}
+\title{QuantitativePooledTesting: Pooled Testing Strategies with Quantitative Assays}
 \description{
-What the package does (one paragraph).
+To calculate the estimated number of quantitative assays that are needed by "mini-pooling", "mini-pooling with algorithm" (May et al. 2010) <doi:10.1097/QAI.0b013e3181ba37a7>, and marker-assisted mini-pooling with algorithm (Liu et al. 2017).Please refer to Liu et al. (2017) <doi:10.1097/QAI.0000000000001424> for more details.
 }
 \seealso{
 Useful links:
@@ -17,7 +17,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Wanning Su \email{wanning_su@brown.edu}
+
+Authors:
+\itemize{
+  \item Tao Liu \email{tliu@stat.brown.edu}
+}
 
 }
 \keyword{internal}

@@ -1,3 +1,3 @@
-# QuantitativePooledTesting 0.2.3
+3# QuantitativePooledTesting 0.2.3
 
 * Added a `NEWS.md` file to track changes to the package.

@@ -13,13 +13,13 @@ vignette: >
 
 **Title** Quantitative Pooled Testing
 
-**Version** 1.0
+**Version** 0.2.3
 
 **Date** "`r Sys.Date()`"
 
 **Authors** Wanning Su, Tao Liu
 
-**Maintainer** Wanning (wanning_su@brown.edu)
+**Maintainer** Wanning Su (wanning_su@brown.edu)
 
 **Description** This package implements pooled testing with quantitative assays. 
 
@@ -340,3 +340,4 @@ s = c(5, 3, 1, 2, 4)
 mmpa_atr(v, s, max_K, cutoff = 2000, quietly = TRUE)
 ```
 
+devtools::check_win_devel()
